@@ -39,6 +39,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       discharge_date: {
         type: DataTypes.DATE,
+        allowNull: false,
       },
     },
     {
