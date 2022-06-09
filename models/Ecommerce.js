@@ -1,54 +1,43 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class Client extends Model {
+  class Ecommerce extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
+    static associate({ OrdersEcommerce }) {
       // define association here
+      this.hasMany(OrdersEcommerce, { foreignKey: "uuid_ecommerce" });
     }
   }
-  Client.init(
+  Ecommerce.init(
     {
-      uuid_client: {
+      uuid_ecommerce: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
         allowNull: false,
         unique: true,
       },
-      client_name: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      price: {
+        type: DataTypes.FLOAT,
       },
-      client_last_name: {
+      description: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
-      image_client: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      client_email: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      national: {
+        type: DataTypes.BOOLEAN,
       },
       modification_date: {
         type: DataTypes.DATE,
-        allowNull: false,
-      },
-      discharge_date: {
-        type: DataTypes.DATE,
-        allowNull: false,
       },
     },
     {
       sequelize,
-      modelName: "Client",
+      modelName: "Ecommerce",
     }
   );
-  return Client;
+  return Ecommerce;
 };

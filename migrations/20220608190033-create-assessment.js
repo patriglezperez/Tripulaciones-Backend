@@ -1,27 +1,47 @@
-'use strict';
+"use strict";
 module.exports = {
-  async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('assessments', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
-      },
+  async up(queryInterface, DataTypes) {
+    await queryInterface.createTable("Assessments", {
       uuid_assessment: {
-        type: Sequelize.UUID
-      },
-      createdAt: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        primaryKey: true,
         allowNull: false,
-        type: Sequelize.DATE
+        unique: true,
       },
-      updatedAt: {
+      uuid_store: {
+        type: DataTypes.UUID,
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        references: {
+          model: {
+            tableName: "Store",
+          },
+          key: "uuid_store",
+        },
+      },
+      tier_assessment: {
+        type: DataTypes.BOOLEAN,
+      },
+      uuid_father_assessment: {
+        type: DataTypes.UUID,
+      },
+      value_assessment: {
+        type: DataTypes.FLOAT(6),
+      },
+      text_assessment: {
+        type: DataTypes.STRING,
+      },
+      modification_date: {
+        allowNull: false,
+        type: DataTypes.DATE,
+      },
+      discharge_date: {
+        allowNull: false,
+        type: DataTypes.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('assessments');
-  }
+    await queryInterface.dropTable("Assessments");
+  },
 };

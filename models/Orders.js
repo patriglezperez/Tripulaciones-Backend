@@ -1,50 +1,36 @@
 "use strict";
 const { Model } = require("sequelize");
+const ordersecommerce = require("./ordersecommerce");
 module.exports = (sequelize, DataTypes) => {
-  class Assessment extends Model {
+  class Orders extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ Store }) {
+    static associate({ Store, OrdersEcommerce }) {
       // define association here
-
       this.belongsTo(Store, { foreignKey: "uuid_store" });
+      this.hasMany(OrdersEcommerce, { foreignKey: "uuid_order" });
     }
   }
-  Assessment.init(
+  Orders.init(
     {
-      uuid_assessment: {
+      uuid_order: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
         allowNull: false,
         unique: true,
       },
-      tier_assessment: {
-        type: DataTypes.BOOLEAN,
-      },
-      uuid_father_assessment: {
-        type: DataTypes.UUID,
-      },
-      value_assessment: {
-        type: DataTypes.FLOAT(6),
-      },
-      text_assessment: {
-        type: DataTypes.STRING,
-      },
-      modification_date: {
-        type: DataTypes.DATE,
-      },
-      discharge_date: {
+      order_date: {
         type: DataTypes.DATE,
       },
     },
     {
       sequelize,
-      modelName: "Assessment",
+      modelName: "Orders",
     }
   );
-  return Assessment;
+  return Orders;
 };
