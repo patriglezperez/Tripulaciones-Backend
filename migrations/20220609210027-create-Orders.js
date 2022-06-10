@@ -19,9 +19,27 @@ module.exports = {
           key: "uuid_store",
         },
       },
+      uuid_client: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        references: {
+          model: {
+            tableName: "Client",
+          },
+          key: "uuid_client",
+        },
+      },
       order_date: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,
+      },
+      createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
       },
     });
   },

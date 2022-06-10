@@ -30,7 +30,12 @@ module.exports = (sequelize, DataTypes) => {
       national: {
         type: DataTypes.BOOLEAN,
       },
-      modification_date: {
+      createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
         type: DataTypes.DATE,
       },
     },

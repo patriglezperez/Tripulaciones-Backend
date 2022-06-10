@@ -24,12 +24,13 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      modification_date: {
+      createdAt: {
+        allowNull: false,
         type: DataTypes.DATE,
       },
-      discharge_date: {
-        type: DataTypes.DATE,
+      updatedAt: {
         allowNull: false,
+        type: DataTypes.DATE,
       },
     });
   },

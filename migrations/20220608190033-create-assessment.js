@@ -19,6 +19,16 @@ module.exports = {
           key: "uuid_store",
         },
       },
+      uuid_client: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        references: {
+          model: {
+            tableName: "Client",
+          },
+          key: "uuid_client",
+        },
+      },
       tier_assessment: {
         type: DataTypes.BOOLEAN,
       },
@@ -31,12 +41,13 @@ module.exports = {
       text_assessment: {
         type: DataTypes.STRING(255),
       },
-      modification_date: {
+      createdAt: {
+        allowNull: false,
         type: DataTypes.DATE,
       },
-      discharge_date: {
-        type: DataTypes.DATE,
+      updatedAt: {
         allowNull: false,
+        type: DataTypes.DATE,
       },
     });
   },

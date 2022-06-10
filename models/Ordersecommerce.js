@@ -16,7 +16,16 @@ module.exports = (sequelize, DataTypes) => {
   OrdersEcommerce.init(
     {
       amount: DataTypes.INTEGER,
+      createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+      },
     },
+
     {
       sequelize,
       modelName: "OrdersEcommerce",

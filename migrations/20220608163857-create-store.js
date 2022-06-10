@@ -11,6 +11,7 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
+
       image_owner: {
         type: DataTypes.STRING,
       },
@@ -69,13 +70,13 @@ module.exports = {
         type: DataTypes.STRING(1),
         allowNull: false,
       },
-      modification_date: {
-        type: DataTypes.DATE,
+      createdAt: {
         allowNull: false,
+        type: DataTypes.DATE,
       },
-      discharge_date: {
-        type: DataTypes.DATE,
+      updatedAt: {
         allowNull: false,
+        type: DataTypes.DATE,
       },
     });
   },

@@ -8,9 +8,10 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ Store, OrdersEcommerce }) {
+    static associate({ Store, OrdersEcommerce, Client }) {
       // define association here
       this.belongsTo(Store, { foreignKey: "uuid_store" });
+      this.belongsTo(Client, { foreignKey: "uuid_client " });
       this.hasMany(OrdersEcommerce, { foreignKey: "uuid_order" });
     }
   }
@@ -26,6 +27,14 @@ module.exports = (sequelize, DataTypes) => {
       order_date: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,
+      },
+      createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
       },
     },
     {

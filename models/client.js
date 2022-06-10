@@ -7,8 +7,10 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
+    static associate({ Orders, Assessment }) {
       // define association here
+      this.hasMany(Orders, { foreignKey: "uuid_client" });
+      this.hasMany(Assessment, { foreignKey: "uuid_client" });
     }
   }
   Client.init(
@@ -35,12 +37,13 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      modification_date: {
+      createdAt: {
+        allowNull: false,
         type: DataTypes.DATE,
       },
-      discharge_date: {
-        type: DataTypes.DATE,
+      updatedAt: {
         allowNull: false,
+        type: DataTypes.DATE,
       },
     },
     {

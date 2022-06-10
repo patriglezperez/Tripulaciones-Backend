@@ -7,10 +7,10 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ Store }) {
+    static associate({ Store, Client }) {
       // define association here
-
       this.belongsTo(Store, { foreignKey: "uuid_store" });
+      this.belongsTo(Client, { foreignKey: "uuid_client" });
     }
   }
   Assessment.init(
@@ -34,12 +34,13 @@ module.exports = (sequelize, DataTypes) => {
       text_assessment: {
         type: DataTypes.STRING(255),
       },
-      modification_date: {
+      createdAt: {
+        allowNull: false,
         type: DataTypes.DATE,
       },
-      discharge_date: {
-        type: DataTypes.DATE,
+      updatedAt: {
         allowNull: false,
+        type: DataTypes.DATE,
       },
     },
     {
