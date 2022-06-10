@@ -26,7 +26,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       order_date: {
         type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW,
       },
       createdAt: {
         allowNull: false,

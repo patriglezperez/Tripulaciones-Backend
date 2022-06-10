@@ -31,7 +31,6 @@ module.exports = {
       },
       order_date: {
         type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW,
       },
       createdAt: {
         allowNull: false,
