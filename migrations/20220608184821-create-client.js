@@ -19,7 +19,6 @@ module.exports = {
       },
       image_client: {
         type: DataTypes.STRING,
-        allowNull: true,
       },
       client_email: {
         type: DataTypes.STRING,
@@ -27,7 +26,6 @@ module.exports = {
       },
       modification_date: {
         type: DataTypes.DATE,
-        allowNull: false,
       },
       discharge_date: {
         type: DataTypes.DATE,

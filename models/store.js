@@ -1,12 +1,15 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
+  const emailRegex =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   class Store extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
+
     static associate({ Assessment, Orders }) {
       // define association here
       this.hasMany(Assessment, { foreignKey: "uuid_assessment" });
@@ -19,12 +22,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
-        allowNull: false,
         unique: true,
       },
       image_owner: {
         type: DataTypes.STRING,
-        allowNull: true,
       },
       owner_name: {
         type: DataTypes.STRING,
@@ -48,18 +49,18 @@ module.exports = (sequelize, DataTypes) => {
       },
       description_store: {
         type: DataTypes.STRING,
-        allowNull: true,
       },
       image_store: {
         type: DataTypes.STRING,
-        allowNull: true,
       },
       store_phone_number: {
         type: DataTypes.STRING(20),
-        allowNull: true,
       },
       store_email: {
         type: DataTypes.STRING,
+        validate: {
+          is: emailRegex,
+        },
         allowNull: false,
       },
       store_address: {
@@ -74,7 +75,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       premium: {
         type: DataTypes.BOOLEAN,
-        allowNull: false,
         defaultValue: false,
       },
       product_type: {

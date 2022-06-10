@@ -13,7 +13,7 @@ module.exports = {
         type: DataTypes.FLOAT,
       },
       description: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(255),
       },
       national: {
         type: DataTypes.BOOLEAN,

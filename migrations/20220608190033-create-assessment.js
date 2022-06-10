@@ -29,15 +29,14 @@ module.exports = {
         type: DataTypes.FLOAT(6),
       },
       text_assessment: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(255),
       },
       modification_date: {
-        allowNull: false,
         type: DataTypes.DATE,
       },
       discharge_date: {
-        allowNull: false,
         type: DataTypes.DATE,
+        allowNull: false,
       },
     });
   },

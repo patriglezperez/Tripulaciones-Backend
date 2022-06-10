@@ -1,6 +1,8 @@
 "use strict";
 module.exports = {
   async up(queryInterface, DataTypes) {
+    const emailRegex =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     await queryInterface.createTable("Store", {
       uuid_store: {
         type: DataTypes.UUID,
@@ -11,7 +13,6 @@ module.exports = {
       },
       image_owner: {
         type: DataTypes.STRING,
-        allowNull: true,
       },
       owner_name: {
         type: DataTypes.STRING,
@@ -35,18 +36,18 @@ module.exports = {
       },
       description_store: {
         type: DataTypes.STRING,
-        allowNull: true,
       },
       image_store: {
         type: DataTypes.STRING,
-        allowNull: true,
       },
       store_phone_number: {
         type: DataTypes.STRING(20),
-        allowNull: true,
       },
       store_email: {
         type: DataTypes.STRING,
+        validate: {
+          is: emailRegex,
+        },
         allowNull: false,
       },
       store_address: {
