@@ -2,7 +2,7 @@ const { FindStore, CreateStore } = require('../../managers/StoreManager');
 
 
 /**
- * We modify the data of a local
+ * We add the data of a local
  * @param {json} req
  * @returns {json} res
  */
