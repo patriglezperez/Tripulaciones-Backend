@@ -7,8 +7,7 @@ const { FindClient } = require("../../managers/ClientManager"); ///
  */
  async function patchClient(req, res) {
     try {
-        const { uuidClient } = req.body;
-        const client = await FindClient({"uuid_client": uuidClient});
+        const client = await FindClient({"uuid_client": req.body.uuidClient});
         
         if (client) {
             /// update

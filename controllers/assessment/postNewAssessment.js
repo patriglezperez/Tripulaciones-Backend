@@ -12,7 +12,7 @@ const { FindByParams, CreateAssessment } = require("../../managers/AssessmentMan
             await CreateAssessment(req.body)
             res.json();
         } else {
-            res.status(404).json("Not found");
+            res.status(400).json("Bad Request"); /// Creo q este pero me queda la duda :S
         }
     } catch (err) {
         res.status(500).json("Server Error");
