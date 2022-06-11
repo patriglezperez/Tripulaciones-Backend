@@ -15,11 +15,38 @@ const FindAssessment = require('../../managers/AssessmentManager');
  * resp: null}
  */
 async function recoveryAssessment(uuidStore) {
+    let preparedValuations;
+    let value_assessment = 0;
+    let amount_assessment = 0;
+    let average = 0;
     try {
-
+        const assessment = await FindAssessment({"uuid_store": uuidStore}); /// tendria q venir ordenado por fecha como coño se lo digo al equallizer
+        if (assessment) {
+            // we calculate the average of the valuations
+            assessment.forEach(function(e) {
+                if (e.value_assessment > 0) {
+                    value_assessment += e.value_assessment;
+                    amount_assessment += 1;
+                }
+            })
+            average = (amount_assessment > 0) ? 
+                (value_assessment / amount_assessment) : value_assessment
+            
+            // we prepare the parent child dependencies format
+            let processAssessment = assessment.filter(e => e.tier_assessment);
+            processAssessment.forEach((ee,i) => {
+                let child;
+                child = assessment.filter(e => ee.uuid_assessment === e.uuid_father_assessment);
+                processAssessment[i].resp = child ? child : null; /// seria len > 0 ???
+            })
+            preparedValuations = {"data": processAssessment, "average": average};
+        } else {
+            preparedValuations = null;
+        }
     } catch (err) {
-        
+        /* la jodimos */
     }
+    return preparedValuations;
 }
 
 /**
@@ -31,9 +58,11 @@ async function getIDStore(req, res) {
     try {
         const uuidStore = req.params.Id;
         const store = await FindStore({"uuid_store": uuidStore});
-        // recovery assessment
-        const assessment = recoveryAssessment(uuidStore);
+        
         if (store) {
+            // recovery assessment
+            const assessment = await recoveryAssessment(uuidStore);
+            store.assessment = assessment;
             res.json({"store": store});
         } else {
             res.status(404).json("Not found");
