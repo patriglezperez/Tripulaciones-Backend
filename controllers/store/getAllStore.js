@@ -1,4 +1,4 @@
-const FindAllStores = require('../../managers/StoreManager');
+const { FindAllStores } = require("../../managers/StoreManager");
 
 
 /**
