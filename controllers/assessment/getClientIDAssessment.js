@@ -31,7 +31,7 @@ async function processAssessment(assessment) {
                 (value_assessment / amount_assessment) : value_assessment
             
             // we prepare the parent child dependencies format
-            let processAssessment = assessment.filter(e => e.tier_assessment); /// no necesitamos el campo tier solo saber si tiene datos en father
+            let processAssessment = assessment.filter(e => e.tier_assessment);
             processAssessment.forEach((ee,i) => {
                 let child; /// inicializamos con solo la declaracion es eso posible ???
                 child = assessment.filter(e => ee.uuid_assessment === e.uuid_father_assessment);
@@ -48,14 +48,14 @@ async function processAssessment(assessment) {
 }
 
 /**
- * Recovery of all Assessment associated with a store,
- * @param {json} req -- req.params.Id = uuidStore
+ * Recovery of all Assessment associated with a client,
+ * @param {json} req -- req.params.Id = uuid_client
  * @returns {json} res
  */
- async function getStoreIDAssessment(req, res) {
+ async function getClientIDAssessment(req, res) {
     try {
         /// tendria q venir ordenado por fecha como coño se lo digo al equallizer
-        const assessment = await FindByParams({"uuid_store": req.params.Id});
+        const assessment = await FindByParams({"uuid_client": req.params.Id});
         const recoveryAssessment = assessment ? processAssessment(assessment) : null
         if (assessment) {
             res.json({"assessment": recoveryAssessment});
@@ -67,4 +67,4 @@ async function processAssessment(assessment) {
     }
 }
 
-module.exports = getStoreIDAssessment;
+module.exports = getClientIDAssessment;
