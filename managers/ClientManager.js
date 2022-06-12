@@ -49,11 +49,11 @@ async function DeleteClient(id) {
   }
 }
 
-module.exports(
+module.exports = {
   CreateClient,
   FindClient,
   FindAllClients,
   FindByParams,
   UpdateClient,
-  DeleteClient
-);
+  DeleteClient,
+};
