@@ -43,11 +43,9 @@ async function UpdateOrdersecommerce(OrderId, EcommerceId, params) {
 }
 async function DeleteOrdersecommerce(OrderId, EcommerceId) {
   try {
-    return Ordersecommerce.destroy(
-      { where: { uuid_order: OrderId } } && {
-        where: { uuid_ecommerce: EcommerceId },
-      }
-    );
+    return Ordersecommerce.destroy({
+      where: { uuid_order: OrderId, uuid_ecommerce: EcommerceId },
+    });
   } catch (err) {
     console.log(err);
   }
