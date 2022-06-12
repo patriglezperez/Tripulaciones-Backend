@@ -50,11 +50,11 @@ async function DeleteStore(id) {
     console.log(err);
   }
 }
-module.exports(
+module.exports = {
   CreateStore,
   FindStore,
   FindAllStores,
   FindAllStoresWhere,
   UpdateStore,
   DeleteStore
-);
+};

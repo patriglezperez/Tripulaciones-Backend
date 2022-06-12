@@ -53,11 +53,11 @@ async function DeleteOrdersecommerce(OrderId, EcommerceId) {
   }
 }
 
-module.exports(
+module.exports = {
   CreateOrdersecommerce,
   FindOrdersecommerce,
   FindAllOrdersecommerces,
   UpdateOrdersecommerce,
   FindByParams,
   DeleteOrdersecommerce
-);
+};

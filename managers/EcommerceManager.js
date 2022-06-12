@@ -49,11 +49,11 @@ async function DeleteEcommerce(id) {
   }
 }
 
-module.exports(
+module.exports = {
   CreateEcommerce,
   FindEcommerce,
   FindAllEcommerces,
   UpdateEcommerce,
   FindByParams,
   DeleteEcommerce
-);
+};
