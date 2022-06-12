@@ -7,7 +7,7 @@ const { FindAllEcommerces } = require("../../managers/EcommerceManager");
  */
  async function getAllEcommerce(req, res) {
     try {
-        const ecommerce = await FindEcommerce({"uuid_ecommerce": req.params.Id});
+        const ecommerce = await FindAllEcommerces({"uuid_ecommerce": req.params.Id});
         
         if (ecommerce) {
             res.json({"ecommerce": ecommerce});

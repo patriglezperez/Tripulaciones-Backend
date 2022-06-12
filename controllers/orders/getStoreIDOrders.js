@@ -1,5 +1,6 @@
 const { FindByParams } = require("../../managers/OrdersManager");
-const { FindByParams } = require("../../managers/OrdersEcommerce");
+const processOrdersEcommerce = require("../../utils/processOrdersEcommerce");
+
 
 /**
  * We recover all data from the Table orders associated with a local
@@ -9,9 +10,10 @@ const { FindByParams } = require("../../managers/OrdersEcommerce");
  async function getStoreIDOrders(req, res) {
     try {
         const orders = await FindByParams({"uuid_store": req.params.Id}); /// orders
-        
+        /// proceso orders ecommerce 
+        const ordersFull = orders ? await processOrdersEcommerce(orders) : orders;
         if (orders) {
-            res.json({"orders": orders});
+            res.json({"orders": ordersFull});
         } else {
             res.status(404).json("Not found");
         }
