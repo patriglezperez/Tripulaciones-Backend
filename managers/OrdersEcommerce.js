@@ -41,10 +41,10 @@ async function UpdateOrdersecommerce(OrderId, EcommerceId, params) {
     console.log(err);
   }
 }
-async function DeleteOrdersecommerce(OrderId, EcommerceId) {
+async function DeleteOrdersecommerce(OrderId) {
   try {
     return Ordersecommerce.destroy({
-      where: { uuid_order: OrderId, uuid_ecommerce: EcommerceId },
+      where: { uuid_order: OrderId },
     });
   } catch (err) {
     console.log(err);
