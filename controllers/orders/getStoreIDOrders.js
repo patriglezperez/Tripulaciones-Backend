@@ -1,4 +1,5 @@
-const { FindByParams } = require("../../managers/OrdersManager.js");
+const { FindByParams } = require("../../managers/OrdersManager");
+const { FindByParams } = require("../../managers/OrdersEcommerce");
 
 /**
  * We recover all data from the Table orders associated with a local
@@ -7,7 +8,7 @@ const { FindByParams } = require("../../managers/OrdersManager.js");
  */
  async function getStoreIDOrders(req, res) {
     try {
-        const orders = await FindByParams({"uuid_store": req.params.Id});
+        const orders = await FindByParams({"uuid_store": req.params.Id}); /// orders
         
         if (orders) {
             res.json({"orders": orders});
