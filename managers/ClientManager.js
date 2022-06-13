@@ -54,5 +54,6 @@ module.exports = {
   FindClient,
   FindAllClients,
   FindByParams,
+  UpdateClient,
   DeleteClient,
 };

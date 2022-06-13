@@ -1,4 +1,4 @@
-const { FindClient } = require("../../managers/ClientManager"); ///
+const { FindClient, UpdateClient } = require("../../managers/ClientManager"); ///
 
 /**
  * Client data update
@@ -11,6 +11,7 @@ const { FindClient } = require("../../managers/ClientManager"); ///
         
         if (client) {
             /// update
+            await UpdateClient(req.user.uid, req.body)
             res.json();
         } else {
             res.status(404).json("Not found");

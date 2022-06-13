@@ -18,7 +18,6 @@ const verifyToken = (req, res, next) => {
  
   getAuthToken(req,res, async ()=>{
     const decodedToken = await firebase.auth().verifyIdToken(req.token);
-    console.log("decodedToken: ", decodedToken);
     req.user = decodedToken;
     next();
   })

@@ -7,8 +7,7 @@ const { FindClient, CreateClient } = require("../../managers/ClientManager"); //
  */
  async function postNewClient(req, res) {
     try {
-        const { uuidClient } = req.body;
-        const client = await FindClient({"uuid_client": uuidClient});
+        const client = await FindClient({"uuid_client": req.user.uid});
         
         if (!client) {
             /// si existe actualizamos pero, si falla ??? los manager no me dicen nada :S
