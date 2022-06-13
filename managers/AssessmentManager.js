@@ -49,11 +49,11 @@ async function DeleteAssessment(id) {
   }
 }
 
-module.exports(
+module.exports = {
   CreateAssessment,
   FindAssessment,
   FindAllAssessments,
   UpdateAssessment,
   FindByParams,
-  DeleteAssessment
-);
+  DeleteAssessment,
+};

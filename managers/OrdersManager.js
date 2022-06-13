@@ -49,11 +49,11 @@ async function DeleteOrders(id) {
   }
 }
 
-module.exports(
+module.exports = {
   CreateOrders,
   FindOrders,
   FindAllOrderss,
   UpdateOrders,
   FindByParams,
-  DeleteOrders
-);
+  DeleteOrders,
+};

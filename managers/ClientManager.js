@@ -29,6 +29,18 @@ async function FindByParams(params) {
     console.log(err);
   }
 }
+async function UpdateClient(id, params) {
+  try {
+    return Client.update(
+      { params },
+      {
+        where: { uuid_client: id },
+      }
+    );
+  } catch (err) {
+    console.log(err);
+  }
+}
 async function DeleteClient(id) {
   try {
     return Client.destroy({ where: { uuid_client: id } });
@@ -37,10 +49,11 @@ async function DeleteClient(id) {
   }
 }
 
-module.exports(
+module.exports = {
   CreateClient,
   FindClient,
   FindAllClients,
   FindByParams,
-  DeleteClient
-);
+  UpdateClient,
+  DeleteClient,
+};
