@@ -7,7 +7,7 @@ const { FindByParams, CreateAssessment } = require("../../managers/AssessmentMan
  */
  async function postNewAssessment(req, res) {
     try {
-        const assessment = await FindByParams({"uuid_assessment": req.body.uuid_assessment});
+        const assessment = await FindByParams({"uuid_assessment": req.user.uid});
         if (!assessment) {
             await CreateAssessment(req.body)
             res.json();
