@@ -41,13 +41,11 @@ async function UpdateOrdersecommerce(OrderId, EcommerceId, params) {
     console.log(err);
   }
 }
-async function DeleteOrdersecommerce(OrderId, EcommerceId) {
+async function DeleteOrdersecommerce(OrderId) {
   try {
-    return Ordersecommerce.destroy(
-      { where: { uuid_order: OrderId } } && {
-        where: { uuid_ecommerce: EcommerceId },
-      }
-    );
+    return Ordersecommerce.destroy({
+      where: { uuid_order: OrderId },
+    });
   } catch (err) {
     console.log(err);
   }
@@ -59,5 +57,5 @@ module.exports = {
   FindAllOrdersecommerces,
   UpdateOrdersecommerce,
   FindByParams,
-  DeleteOrdersecommerce
+  DeleteOrdersecommerce,
 };

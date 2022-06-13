@@ -56,5 +56,5 @@ module.exports = {
   FindAllStores,
   FindAllStoresWhere,
   UpdateStore,
-  DeleteStore
+  DeleteStore,
 };

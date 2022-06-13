@@ -55,5 +55,5 @@ module.exports = {
   FindAllAssessments,
   UpdateAssessment,
   FindByParams,
-  DeleteAssessment
+  DeleteAssessment,
 };

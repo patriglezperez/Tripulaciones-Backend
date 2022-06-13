@@ -55,5 +55,5 @@ module.exports = {
   FindAllOrderss,
   UpdateOrders,
   FindByParams,
-  DeleteOrders
+  DeleteOrders,
 };

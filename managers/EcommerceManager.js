@@ -55,5 +55,5 @@ module.exports = {
   FindAllEcommerces,
   UpdateEcommerce,
   FindByParams,
-  DeleteEcommerce
+  DeleteEcommerce,
 };

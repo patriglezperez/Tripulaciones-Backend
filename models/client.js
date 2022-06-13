@@ -30,9 +30,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      image_client: {
-        type: DataTypes.STRING,
-      },
       client_email: {
         type: DataTypes.STRING,
         allowNull: false,
