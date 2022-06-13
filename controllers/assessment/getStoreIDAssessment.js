@@ -4,13 +4,13 @@ const processAssessment = require("../../utils/processAssessment")
 
 /**
  * Recovery of all Assessment associated with a store,
- * @param {json} req -- req.params.Id = uuidStore
+ * @param {json} req -- req.user.uid = uuidStore
  * @returns {json} res
  */
  async function getStoreIDAssessment(req, res) {
     try {
         /// tendria q venir ordenado por fecha como coño se lo digo al equallizer
-        const assessment = await FindByParams({"uuid_store": req.params.Id});
+        const assessment = await FindByParams({"uuid_store": req.user.uid});
         const recoveryAssessment = assessment ? processAssessment(assessment) : null
         if (assessment) {
             res.json({"assessment": recoveryAssessment});

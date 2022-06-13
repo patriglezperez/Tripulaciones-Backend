@@ -7,8 +7,7 @@ const { FindEcommerce, UpdateEcommerce } = require("../../managers/EcommerceMana
  */
  async function patchEcommerce(req, res) {
     try {
-        const { uuid_ecommerce } = req.body
-        const ecommerce = await FindEcommerce({"uuid_ecommerce": uuid_ecommerce});
+        const ecommerce = await FindEcommerce({"uuid_ecommerce": req.body.uuid_ecommerce});
         
         if (ecommerce) {
             /// si existe actualizamos pero, si falla ??? los manager no me dicen nada :S

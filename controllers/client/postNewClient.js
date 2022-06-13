@@ -2,7 +2,7 @@ const { FindClient, CreateClient } = require("../../managers/ClientManager"); //
 
 /**
  * We add the data of a client
- * @param {json} req -- req.params.Id = uuid_client
+ * @param {json} req 
  * @returns {json} res
  */
  async function postNewClient(req, res) {

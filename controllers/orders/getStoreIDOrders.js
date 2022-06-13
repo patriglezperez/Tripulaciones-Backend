@@ -4,12 +4,12 @@ const processOrdersEcommerce = require("../../utils/processOrdersEcommerce");
 
 /**
  * We recover all data from the Table orders associated with a local
- * @param {json} req -- req.params.Id = uuid_store
+ * @param {json} req -- req.user.uid = uuid_store
  * @returns {json} res
  */
  async function getStoreIDOrders(req, res) {
     try {
-        const orders = await FindByParams({"uuid_store": req.params.Id}); /// orders
+        const orders = await FindByParams({"uuid_store": req.user.uid}); /// orders
         /// proceso orders ecommerce 
         const ordersFull = orders ? await processOrdersEcommerce(orders) : orders;
         if (orders) {

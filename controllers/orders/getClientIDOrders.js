@@ -4,12 +4,12 @@ const processOrdersEcommerce = require("../../utils/processOrdersEcommerce");
 
 /**
  * We recover all data from the Table orders associated with a client
- * @param {json} req -- req.params.Id = uuid_client
+ * @param {json} req -- req.user.uid = uuid_client
  * @returns {json} res
  */
  async function getClientIDOrders(req, res) {
     try {
-        const orders = await FindByParams({"uuid_client": req.params.Id}); /// orders
+        const orders = await FindByParams({"uuid_client": req.user.uid}); /// orders
         // process orders ecommerce 
         const ordersFull = orders ? await processOrdersEcommerce(orders) : orders;
         if (orders) {
