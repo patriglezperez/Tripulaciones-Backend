@@ -21,6 +21,11 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         unique: true,
       },
+      image_ecommerce: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      product_type: DataTypes.STRING(1),
       price: {
         type: DataTypes.FLOAT,
       },

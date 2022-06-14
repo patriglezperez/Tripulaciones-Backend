@@ -13,6 +13,7 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      green_points: DataTypes.INTEGER,
       client_last_name: {
         type: DataTypes.STRING,
         allowNull: false,

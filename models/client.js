@@ -30,6 +30,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      green_points: DataTypes.INTEGER,
       client_email: {
         type: DataTypes.STRING,
         allowNull: false,
