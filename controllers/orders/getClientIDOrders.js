@@ -8,12 +8,13 @@ const processOrdersEcommerce = require("../../utils/processOrdersEcommerce");
  * @returns {json} res
  */
  async function getClientIDOrders(req, res) {
+    let orders;
     try {
-        const orders = await FindByParams({"uuid_client": req.user.uid}); /// orders
+        orders = await FindByParams({"uuid_client": req.user.uid}); /// orders
         // process orders ecommerce 
-        const ordersFull = orders ? await processOrdersEcommerce(orders) : orders;
+        orders.ordersFull = orders ? await processOrdersEcommerce(orders) : null;
         if (orders) {
-            res.json({"orders": ordersFull});
+            res.json({"orders": orders});
         } else {
             res.status(404).json("Not found");
         }
