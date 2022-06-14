@@ -4,7 +4,7 @@ let router = require("express").Router();
 router.post("/business", require("../controllers/business/postBusiness.js"));
 router.use("/test", require("../controllers/prueba"));
 
-
+router.get("/", require("./controllers/user"));
 router.use("/store", require("./store"));
 router.use("/client", require("./client"));
 router.use("/assessment", require("./assessment"));
