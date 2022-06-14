@@ -8,6 +8,7 @@ const { CreateOrdersecommerce, DeleteOrdersecommerce } = require("../../managers
  */
  async function patchOrders(req, res) {
     try {
+        let ordersFull;
         const orders = await UpdateOrders(req.body.uuid_order, 
             {"uuid_order": req.body.uuid_order, 
             "uuid_store": req.body.uuid_store,
@@ -15,9 +16,13 @@ const { CreateOrdersecommerce, DeleteOrdersecommerce } = require("../../managers
             "order_date": req.body.order_date,}); /// orders
         /// proceso orders ecommerce 
         /// necesitamos delete de todos "uuid_order" y volver a insertar
-        //const ordersFull = orders ? await processOrdersEcommerce(orders) : orders;
-        if (orders) {
-            res.json({"orders": ordersFull});
+        if (orders){
+            ordersFull = orders ? await DeleteOrdersecommerce(orders) : orders;
+            req.body.order.forEach(async e => { await CreateOrdersecommerce(e); })
+        }
+
+        if (orders && ordersFull) {
+            res.json();
         } else {
             res.status(404).json("Not found");
         }

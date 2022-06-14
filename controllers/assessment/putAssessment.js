@@ -7,10 +7,9 @@ const { FindByParams, UpdateAssessment } = require("../../managers/AssessmentMan
  */
  async function putAssessment(req, res) {
     try {
-        const { uuid_assessment } = req.body
-        const assessment = await FindByParams({"uuid_assessment": uuid_assessment});
+        const assessment = await FindByParams({"uuid_assessment": req.user.uid});
         if (assessment) {
-            await UpdateAssessment(uuid_assessment, req.body)
+            await UpdateAssessment(req.user.uid, req.body)
             res.json();
         } else {
             res.status(404).json("Not found");

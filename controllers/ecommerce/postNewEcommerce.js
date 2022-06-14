@@ -7,7 +7,7 @@ const { FindEcommerce, CreateEcommerce } = require("../../managers/EcommerceMana
  */
  async function postNewEcommerce(req, res) {
     try {
-        const ecommerce = await FindEcommerce({"uuid_ecommerce": req.body.uuid_ecommerce});
+        const ecommerce = await FindEcommerce({"uuid_ecommerce": req.user.uid});
         if (!ecommerce) {
             await CreateEcommerce(req.body)
             res.json();

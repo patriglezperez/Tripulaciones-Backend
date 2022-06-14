@@ -2,13 +2,12 @@ const { FindClient } = require("../../managers/ClientManager");
 
 /**
  * Client data recovery
- * @param {json} req -- req.params.Id = uuid_client
+ * @param {json} req -- req.user.uid = uuid_client
  * @returns {json} res
  */
  async function getIDClient(req, res) {
     try {
-        const uuidClient = req.params.Id;
-        const client = await FindClient({"uuid_client": uuidClient});
+        const client = await FindClient({"uuid_client": req.user.uid});
         
         if (client) {
             res.json({"client": client});

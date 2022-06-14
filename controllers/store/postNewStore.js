@@ -8,8 +8,7 @@ const { FindStore, CreateStore } = require('../../managers/StoreManager');
  */
 async function postNewStore(req, res) {
     try {
-        const { uuidStore } = req.body;
-        const store = await FindStore({"uuid_store": uuidStore});
+        const store = await FindStore({"uuid_store": req.user.uid});
         if (!store) {
             /// si existe actualizamos pero, si falla ??? los manager no me dicen nada :S
             await CreateStore(req.body)

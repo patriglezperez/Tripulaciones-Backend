@@ -10,12 +10,11 @@ const processAssessment = require("../../utils/processAssessment")
  */
 async function getIDStore(req, res) {
     try {
-        const uuidStore = req.params.Id;
-        const store = await FindStore({"uuid_store": uuidStore});
+        const store = await FindStore({"uuid_store": req.params.Id});
         
         if (store) {
             // recovery assessment
-            const assessment = await FindByParams({"uuid_store": uuidStore}); /// tendria q venir ordenado por fecha como coño se lo digo al equallizer
+            const assessment = await FindByParams({"uuid_store": req.params.Id}); /// tendria q venir ordenado por fecha como coño se lo digo al equallizer
             const recoveryAssessment = assessment ? processAssessment(assessment) : null
             store.assessment = recoveryAssessment;
             res.json({"store": store});

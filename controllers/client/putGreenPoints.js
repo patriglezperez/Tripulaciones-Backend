@@ -1,17 +1,17 @@
-const { FindClient } = require("../../managers/ClientManager"); ///
+const { FindClient, UpdateClient } = require("../../managers/ClientManager"); ///
 
 /**
  * Client data update
- * @param {json} req -- req.params.Id = uuid_client
+ * @param {json} req -- req.user.uid = uuid_client
  * @returns {json} res
  */
  async function putGreenPoints(req, res) {
     try {
-        const { uuidClient } = req.body;
-        const client = await FindClient({"uuid_client": uuidClient});
+        const client = await FindClient({"uuid_client": req.user.uid});
         
         if (client) {
             /// update
+            await UpdateClient(req.user.uid, req.body)
             res.json();
         } else {
             res.status(404).json("Not found");
