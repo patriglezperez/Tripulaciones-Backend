@@ -2,6 +2,11 @@
 module.exports = {
   async up(queryInterface, DataTypes) {
     await queryInterface.createTable("OrdersEcommerce", {
+      id : {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+      },
       uuid_order: {
         type: DataTypes.UUID,
         primaryKey: true,
