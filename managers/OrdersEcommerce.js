@@ -1,37 +1,38 @@
 "use strict";
-const { Ordersecommerce } = require("../models");
+const { OrdersEcommerce } = require("../models");
 
-async function CreateOrdersecommerce(params) {
+async function CreateOrdersEcommerce(params) {
   try {
-    return Ordersecommerce.create(params);
+    console.log("params_manager: ", params)
+    return OrdersEcommerce.create(params);
   } catch (err) {
     console.log(err);
   }
 }
-async function FindOrdersecommerce(params) {
+async function FindOrdersEcommerce(params) {
   try {
-    return Ordersecommerce.findOne({ where: { params } });
+    return OrdersEcommerce.findOne({ where: { params } });
   } catch (err) {
     console.log(err);
   }
 }
-async function FindAllOrdersecommerces() {
+async function FindAllOrdersEcommerces() {
   try {
-    return Ordersecommerce.findAll();
+    return OrdersEcommerce.findAll();
   } catch (err) {
     console.log(err);
   }
 }
 async function FindByParams(params) {
   try {
-    return Ordersecommerce.findAll({ where: { params } });
+    return OrdersEcommerce.findAll({ where: { params } });
   } catch (err) {
     console.log(err);
   }
 }
-async function UpdateOrdersecommerce(OrderId, EcommerceId, params) {
+async function UpdateOrdersEcommerce(OrderId, EcommerceId, params) {
   try {
-    return Ordersecommerce.update(
+    return OrdersEcommerce.update(
       { params },
       {
         where: { uuid_order: OrderId, uuid_ecommerce: EcommerceId },
@@ -41,9 +42,9 @@ async function UpdateOrdersecommerce(OrderId, EcommerceId, params) {
     console.log(err);
   }
 }
-async function DeleteOrdersecommerce(OrderId) {
+async function DeleteOrdersEcommerce(OrderId) {
   try {
-    return Ordersecommerce.destroy({
+    return OrdersEcommerce.destroy({
       where: { uuid_order: OrderId },
     });
   } catch (err) {
@@ -52,10 +53,10 @@ async function DeleteOrdersecommerce(OrderId) {
 }
 
 module.exports = {
-  CreateOrdersecommerce,
-  FindOrdersecommerce,
-  FindAllOrdersecommerces,
-  UpdateOrdersecommerce,
+  CreateOrdersEcommerce,
+  FindOrdersEcommerce,
+  FindAllOrdersEcommerces,
+  UpdateOrdersEcommerce,
   FindByParams,
-  DeleteOrdersecommerce,
+  DeleteOrdersEcommerce,
 };

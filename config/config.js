@@ -1,4 +1,5 @@
 require("dotenv").config();
+console.log(process.env.DBPSWD);
 module.exports = {
   development: {
     username: process.env.DBUSER,

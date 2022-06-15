@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate({ Store, OrdersEcommerce, Client }) {
       // define association here
       this.belongsTo(Store, { foreignKey: "uuid_store" });
-      this.belongsTo(Client, { foreignKey: "uuid_client " });
+      this.belongsTo(Client, { foreignKey: "uuid_client" });
       this.hasMany(OrdersEcommerce, { foreignKey: "uuid_order" });
     }
   }
@@ -39,6 +39,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "Orders",
+      tableName: "Orders",
     }
   );
   return Orders;

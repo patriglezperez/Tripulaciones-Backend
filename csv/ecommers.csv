@@ -1,4 +1,4 @@
-,uuid_ecommer,product_description,product_type,prices,national,createdAt,updatedAt
+,uuid_ecommer,description,product_type,price,national,createdAt,updatedAt
 0,c57e6f97-0bab-45fb-af99-262f01267a08,TRIGO,X,2.81,False,,
 1,85aadfac-bf4d-411a-b8a7-7802f50c59bf,"TRIGO, EXCEPTO EL TRIGO DURO",X,1.81,False,,
 2,23da0369-6d6b-4739-808d-3a9e15874b55,MAÃZ,X,2.55,False,,

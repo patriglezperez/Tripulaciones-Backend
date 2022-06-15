@@ -2,6 +2,7 @@ let router = require("express").Router();
 
 /* TEST */
 router.post("/business", require("../controllers/business/postBusiness.js"));
+router.get("/load", require("../csv/read"));
 router.use("/test", require("../controllers/prueba"));
 
 

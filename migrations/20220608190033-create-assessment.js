@@ -1,7 +1,7 @@
 "use strict";
 module.exports = {
   async up(queryInterface, DataTypes) {
-    await queryInterface.createTable("Assessments", {
+    await queryInterface.createTable("Assessment", {
       uuid_assessment: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
@@ -33,7 +33,7 @@ module.exports = {
         type: DataTypes.BOOLEAN,
       },
       uuid_father_assessment: {
-        type: DataTypes.UUID,
+        type: DataTypes.STRING(255),
       },
       value_assessment: {
         type: DataTypes.FLOAT(6),
