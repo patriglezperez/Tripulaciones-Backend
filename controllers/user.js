@@ -1,5 +1,5 @@
-const { FindClient } = require("../../managers/ClientManager");
-const { FindStore } = require("../../managers/StoreManager");
+const { FindClient } = require("../managers/ClientManager");
+const { FindStore } = require("../managers/StoreManager");
 
 /**
  * Client or Store
