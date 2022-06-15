@@ -1,7 +1,7 @@
 "use strict";
 module.exports = {
   async up(queryInterface, DataTypes) {
-    await queryInterface.createTable("Ecommerces", {
+    await queryInterface.createTable("Ecommerce", {
       uuid_ecommerce: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
@@ -34,6 +34,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("Ecommerces");
+    await queryInterface.dropTable("Ecommerce");
   },
 };

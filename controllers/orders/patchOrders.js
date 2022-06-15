@@ -1,5 +1,5 @@
 const { UpdateOrders } = require("../../managers/OrdersManager");
-const { CreateOrdersecommerce, DeleteOrdersecommerce } = require("../../managers/EcommerceManager");
+const { CreateOrdersEcommerce, DeleteOrdersEcommerce } = require("../../managers/EcommerceManager");
 
 /**
  * We recover all data from the Table orders associated with a client
@@ -17,8 +17,8 @@ const { CreateOrdersecommerce, DeleteOrdersecommerce } = require("../../managers
         /// proceso orders ecommerce 
         /// necesitamos delete de todos "uuid_order" y volver a insertar
         if (orders){
-            ordersFull = orders ? await DeleteOrdersecommerce(orders) : orders;
-            req.body.order.forEach(async e => { await CreateOrdersecommerce(e); })
+            ordersFull = orders ? await DeleteOrdersEcommerce(orders) : orders;
+            req.body.order.forEach(async e => CreateOrdersEcommerce(e))
         }
 
         if (orders && ordersFull) {

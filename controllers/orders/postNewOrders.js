@@ -1,5 +1,5 @@
 const { CreateOrders } = require("../../managers/OrdersManager");
-const { CreateOrdersecommerce } = require("../../managers/EcommerceManager");
+const { CreateOrdersEcommerce } = require("../../managers/OrdersEcommerce");
 
 
 /**
@@ -15,7 +15,7 @@ async function postNewOrders(req, res) {
                                             "uuid_client": req.body.uuid_client,
                                             "order_date": req.body.order_date,}); // orders
         // process orders ecommerce 
-        req.body.order.forEach(async e => { await CreateOrdersecommerce(e); })
+        req.body.order.forEach(async e => { await CreateOrdersEcommerce(e); })
         if (orders) {
             res.json();
         } else {

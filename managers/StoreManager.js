@@ -12,7 +12,7 @@ async function FindStore(params) {
   try {
     return Store.findOne({ where: { params } });
   } catch (err) {
-    console.log(err);
+    console.log("FindStore: ",err);
   }
 }
 async function FindAllStores() {

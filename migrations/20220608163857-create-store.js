@@ -54,7 +54,6 @@ module.exports = {
       store_address: {
         type: DataTypes.STRING,
         allowNull: true,
-        unique: true,
       },
       company_inscription: {
         type: DataTypes.STRING(9),

@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.BOOLEAN,
       },
       uuid_father_assessment: {
-        type: DataTypes.UUID,
+        type: DataTypes.STRING(255),
       },
       value_assessment: {
         type: DataTypes.FLOAT(6),
@@ -46,6 +46,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "Assessment",
+      tableName: "Assessment",
     }
   );
   return Assessment;

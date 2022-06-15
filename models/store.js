@@ -66,7 +66,6 @@ module.exports = (sequelize, DataTypes) => {
       store_address: {
         type: DataTypes.STRING,
         allowNull: true,
-        unique: true,
       },
       company_inscription: {
         type: DataTypes.STRING(9),
@@ -93,6 +92,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "Store",
+      tableName: "Store",
     }
   );
   return Store;

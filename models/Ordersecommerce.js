@@ -14,7 +14,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   OrdersEcommerce.init(
-    {
+      {
+        id : {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+      },
       amount: DataTypes.INTEGER,
       createdAt: {
         allowNull: false,
@@ -33,6 +38,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "OrdersEcommerce",
+      tableName: "OrdersEcommerce",
     }
   );
   return OrdersEcommerce;
