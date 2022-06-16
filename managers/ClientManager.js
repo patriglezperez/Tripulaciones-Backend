@@ -10,7 +10,7 @@ async function CreateClient(params) {
 }
 async function FindClient(params) {
   try {
-    return Client.findOne({ where: { params } });
+    return Client.findOne({ where: params });
   } catch (err) {
     console.log(err);
   }
@@ -24,7 +24,7 @@ async function FindAllClients() {
 }
 async function FindByParams(params) {
   try {
-    return Client.findAll({ where: { params } });
+    return Client.findAll({ where: params });
   } catch (err) {
     console.log(err);
   }
@@ -32,9 +32,9 @@ async function FindByParams(params) {
 async function UpdateClient(id, params) {
   try {
     return Client.update(
-      { params },
+      params,
       {
-        where: { uuid_client: id },
+        where: id,
       }
     );
   } catch (err) {
@@ -43,7 +43,7 @@ async function UpdateClient(id, params) {
 }
 async function DeleteClient(id) {
   try {
-    return Client.destroy({ where: { uuid_client: id } });
+    return Client.destroy({ where: id });
   } catch (err) {
     console.log(err);
   }

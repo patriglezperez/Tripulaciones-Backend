@@ -10,7 +10,7 @@ async function CreateOrders(params) {
 }
 async function FindOrders(params) {
   try {
-    return Orders.findOne({ where: { params } });
+    return Orders.findOne({ where: params });
   } catch (err) {
     console.log(err);
   }
@@ -24,7 +24,7 @@ async function FindAllOrderss() {
 }
 async function FindByParams(params) {
   try {
-    return Orders.findAll({ where: { params } });
+    return Orders.findAll({ where: params });
   } catch (err) {
     console.log(err);
   }
@@ -32,9 +32,9 @@ async function FindByParams(params) {
 async function UpdateOrders(id, params) {
   try {
     return Orders.update(
-      { params },
+      params,
       {
-        where: { uuid_order: id },
+        where: id,
       }
     );
   } catch (err) {
@@ -43,7 +43,7 @@ async function UpdateOrders(id, params) {
 }
 async function DeleteOrders(id) {
   try {
-    return Orders.destroy({ where: { uuid_order: id } });
+    return Orders.destroy({ where: id });
   } catch (err) {
     console.log(err);
   }
