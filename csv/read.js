@@ -39,14 +39,15 @@ async function readCSV(fileName) {
 
         parser.on('readable', () => {
             while(line = parser.read()) {
-                if (fileName === "./csv/client.csv") {
+                /* if (fileName === "./csv/client.csv") {
                     let name = line.client_name.split(" ");
                     line.client_name = name[0];
                     line.client_last_name = name[1];
                     const client = async () => CreateClient(line);
                     client();
-                }
+                } */
                 if (fileName === "./csv/store.csv") {
+                    line.assessment = between(1, 5);
                     const store = async () => CreateStore(line);
                     store();
                 }
