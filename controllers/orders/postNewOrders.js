@@ -18,7 +18,8 @@ async function postNewOrders(req, res) {
                                             "order_date": req.body.order_date,}); // orders
         // process orders ecommerce 
         req.body.order.forEach(async e => { await CreateOrdersEcommerce(e); })
-        const greenPoints = await calculateGreenPoints(req.body.order);
+        const pickGreenPoints = async => calculateGreenPoints(req.body.order);
+        let greenPoints = pickGreenPoints();
         console.log("greenPoints: ", greenPoints);
         if (orders) {
             res.json();
