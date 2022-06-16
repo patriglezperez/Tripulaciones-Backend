@@ -47,6 +47,9 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.FLOAT,
         allowNull: false,
       },
+      assessment : {
+        type: DataTypes.INTEGER,
+      },
       description_store: {
         type: DataTypes.STRING,
       },

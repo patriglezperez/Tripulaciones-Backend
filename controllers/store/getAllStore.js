@@ -1,5 +1,12 @@
 const { FindAllStores } = require("../../managers/StoreManager");
+const { FindByParams } = require("../../managers/AssessmentManager");
+const processAssessment = require("../../utils/processAssessment")
 
+function between(min, max) {  
+    return Math.floor(
+        Math.random() * (max - min) + min
+    )
+}
 
 /**
  * Data recovery of all stores
@@ -8,7 +15,8 @@ const { FindAllStores } = require("../../managers/StoreManager");
  */
 async function getAllStore(req, res) {
     try {
-        const allStore = await FindAllStores();
+        let allStore = await FindAllStores();
+      
         if (allStore) {
             res.json({"allStore": allStore});
         } else {
