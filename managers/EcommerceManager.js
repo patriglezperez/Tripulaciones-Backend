@@ -10,7 +10,7 @@ async function CreateEcommerce(params) {
 }
 async function FindEcommerce(params) {
   try {
-    return Ecommerce.findOne({ where: { params } });
+    return Ecommerce.findOne({ where: params });
   } catch (err) {
     console.log(err);
   }
@@ -24,7 +24,7 @@ async function FindAllEcommerces() {
 }
 async function FindByParams(params) {
   try {
-    return Ecommerce.findAll({ where: { params } });
+    return Ecommerce.findAll({ where: params });
   } catch (err) {
     console.log(err);
   }
@@ -32,9 +32,9 @@ async function FindByParams(params) {
 async function UpdateEcommerce(id, params) {
   try {
     return Ecommerce.update(
-      { params },
+      params,
       {
-        where: { uuid_ecommerce: id },
+        where: id ,
       }
     );
   } catch (err) {
@@ -43,7 +43,7 @@ async function UpdateEcommerce(id, params) {
 }
 async function DeleteEcommerce(id) {
   try {
-    return Ecommerce.destroy({ where: { uuid_ecommerce: id } });
+    return Ecommerce.destroy({ where: id });
   } catch (err) {
     console.log(err);
   }

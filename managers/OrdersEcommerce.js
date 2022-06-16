@@ -11,7 +11,7 @@ async function CreateOrdersEcommerce(params) {
 }
 async function FindOrdersEcommerce(params) {
   try {
-    return OrdersEcommerce.findOne({ where: { params } });
+    return OrdersEcommerce.findOne({ where: params });
   } catch (err) {
     console.log(err);
   }
@@ -25,7 +25,7 @@ async function FindAllOrdersEcommerces() {
 }
 async function FindByParams(params) {
   try {
-    return OrdersEcommerce.findAll({ where: { params } });
+    return OrdersEcommerce.findAll({ where: params });
   } catch (err) {
     console.log(err);
   }
@@ -33,9 +33,9 @@ async function FindByParams(params) {
 async function UpdateOrdersEcommerce(OrderId, EcommerceId, params) {
   try {
     return OrdersEcommerce.update(
-      { params },
+      params,
       {
-        where: { uuid_order: OrderId, uuid_ecommerce: EcommerceId },
+        where: OrderId, uuid_ecommerce: EcommerceId ,
       }
     );
   } catch (err) {
@@ -45,7 +45,7 @@ async function UpdateOrdersEcommerce(OrderId, EcommerceId, params) {
 async function DeleteOrdersEcommerce(OrderId) {
   try {
     return OrdersEcommerce.destroy({
-      where: { uuid_order: OrderId },
+      where: OrderId ,
     });
   } catch (err) {
     console.log(err);

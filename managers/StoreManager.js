@@ -10,7 +10,8 @@ async function CreateStore(params) {
 }
 async function FindStore(params) {
   try {
-    return Store.findOne({ where: { params } });
+    console.log("params: ", params);
+    return Store.findOne({ where: params });
   } catch (err) {
     console.log("FindStore: ",err);
   }
@@ -25,7 +26,7 @@ async function FindAllStores() {
 
 async function FindAllStoresWhere(params) {
   try {
-    return Store.findAll({ where: { params } });
+    return Store.findAll({ where: params });
   } catch (err) {
     console.log(err);
   }
@@ -34,9 +35,9 @@ async function FindAllStoresWhere(params) {
 async function UpdateStore(id, params) {
   try {
     return Store.update(
-      { params },
+      params,
       {
-        where: { uuid_store: id },
+        where: id,
       }
     );
   } catch (err) {
@@ -45,7 +46,7 @@ async function UpdateStore(id, params) {
 }
 async function DeleteStore(id) {
   try {
-    return Store.destroy({ where: { uuid_store: id } });
+    return Store.destroy({ where: id });
   } catch (err) {
     console.log(err);
   }
